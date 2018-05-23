@@ -1,65 +1,30 @@
 #include <iostream>
 using namespace std;
-
-class Stack {
+//ngg
+// is where it's at.
+class RGBA {
 private:
-    int stack[10] {0,0,0,0,0,0,0,0,0,0};
-    int stackSize = sizeof(stack) / sizeof(stack[0]);
-    int length = 0;
+    uint8_t m_red;
+    uint8_t m_green;
+    uint8_t m_blue;
+    uint8_t m_alpha;
 public:
-
-    void reset() {
-        for (int i = 0; i < stackSize; ++i) {
-            stack[i] = 0;
-        }
-        length = 0;
-    }
-    bool push(int x) {
-        if (length == stackSize)
-            return false;
-        stack[length] = x;
-        ++length;
-        return true;
-    }
-
-    void pop() {
-        if(length > 0) {
-
-            cout << stack[length-1] << endl;
-            stack[length-1] = 0;
-            --length;
-        }
-    }
+    RGBA(uint8_t r_ = 255, uint8_t g_ = 255, uint8_t b_ = 255, uint8_t a_ = 255)
+            : m_red(r_), m_green(g_), m_blue(b_), m_alpha(a_)
+    {}
     void print() {
-        cout << "( ";
-        for (const int &s : stack) {
-            if(s != 0) {
-                cout << s << " ";
-            }
-        }
-        cout << ") " << endl;
-    }
+        cout << "r = " << static_cast<int>(m_red) << " ";
+        cout << "g = " << static_cast<int>(m_green) << " ";
+        cout << "b = " << static_cast<int>(m_blue) << " ";
+        cout << "a = " << static_cast<int>(m_alpha) << " " << endl;
 
+    }
 };
 
 int main() {
-    Stack stack;
-    stack.reset();
 
-    stack.print();
-
-    stack.push(5);
-    stack.push(3);
-    stack.push(8);
-    stack.print();
-
-    stack.pop();
-    stack.print();
-
-    stack.pop();
-    stack.pop();
-
-    stack.print();
+    RGBA teal(0, 127, 127);
+    teal.print();
 
     return 0;
 }
