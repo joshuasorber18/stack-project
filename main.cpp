@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 //ngg
+// is where it's at.
 class RGBA {
 private:
     uint8_t m_red;
